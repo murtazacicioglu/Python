@@ -5,3 +5,5 @@
 - Ferit Yiğit BALABAN <[fybx](https://github.com/fybx)>
 - Sabir SÜLEYMANLI <[sabir-suleyman](https://github.com/sabir-suleyman)>
 - Zeynep KILINÇER <[zkilincer](https://github.com/zkilincer)>
+
+**Proje Konusu:** Sanallaştırılmış Mikroişlemci Yorumlama Ortamı
