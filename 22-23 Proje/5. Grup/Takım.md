@@ -5,4 +5,3 @@
 - Umut Can ORAL <[UmutC4nORAL](https://github.com/UmutC4nORAL)>
  
 **Proje Konusu**: KitApp
- 
