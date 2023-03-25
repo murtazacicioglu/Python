@@ -1,0 +1,16 @@
+örnek video Link:
+
+https://www.youtube.com/watch?v=gVBdmNVEpxY
+
+
+
+Yolov4 models Link:
+
+https://github.com/bulentsezen/yolov4/tree/main/dnn_model
+
+
+
+
+https://drive.google.com/drive/u/0/folders/1kKhixWINLvzLD9RIWEoKzuI45rxb2CGI
+
+Resimler,Yolov4 ve video linkleri bulunmaktadır
