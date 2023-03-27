@@ -1,6 +1,6 @@
 ## 7. Grup
  
-- Kadir Can Çelik <[KadirCanCelik](https://github.com/KadirCanCelik)>
+- Kadir Can Çelik <[kadircancelik1](https://github.com/kadircancelik1)>
 - Salih Salur <[SalihSalurr](https://github.com/SalihSalurr)>
 - Emir Faruk Sarı <[emirfaruk01](https://github.com/emirfaruk01)>
 
