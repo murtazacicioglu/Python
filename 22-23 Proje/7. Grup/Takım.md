@@ -1,11 +1,10 @@
-# 7. Grup
+## 7. Grup
  
 - Kadir Can Çelik <[KadirCanCelik](https://github.com/KadirCanCelik)>
 - Salih Salur <[SalihSalurr](https://github.com/SalihSalurr)>
 - Emir Faruk Sarı <[emirfaruk01](https://github.com/emirfaruk01)>
 
-
-***Proje Konusu: Yapay Zeka ile Cilt Kanseri Tespiti***
+**Proje Konusu:** Yapay Zeka ile Cilt Kanseri Tespiti
 
 **Proje Açıklaması:** Proje yapay zekâ kullanarak erken teşhisin hızlı ve yüksek doğruluk 
 oranlarında yapılabilmesini ön görmektedir. Proje kapsamında özgün algoritma, elde 
