@@ -1,8 +1,8 @@
 # 7. Grup
-
-- Kadir Can Çelik
-- Salih Salur
-- Emir Faruk Sarı
+ 
+- Kadir Can Çelik <[KadirCanCelik](https://github.com/KadirCanCelik)>
+- Salih Salur <[SalihSalurr](https://github.com/SalihSalurr)>
+- Emir Faruk Sarı <[emirfaruk01](https://github.com/emirfaruk01)>
 
 
 ***Proje Konusu: Yapay Zeka ile Cilt Kanseri Tespiti***
