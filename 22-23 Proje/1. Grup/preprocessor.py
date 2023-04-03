@@ -28,3 +28,30 @@ class Preprocessor:
             print(buffer)
         return buffer
             
+
+        
+        """ 
+        İlgili işlemin tanımını içeren lambda fonksiyonlarını tutan dict oluşturup sonrasında for döngüsünde 
+        her bir anahtar ve değere .items() metodunu kullanarak ulaşmak
+        """
+   
+import re as regex
+
+class Preprocessor:
+    def __init__(self, _trimSpaces=True, _clearComments=True, _clearNewline=True):
+        self.filters = {}
+        if _trimSpaces:
+            self.filters["trimSpaces"] = lambda b: regex.sub('[\t ]+', ' ', b).strip()
+        if _clearComments:
+            self.filters["clearComments"] = lambda b: regex.sub('\s*;.+', '', b)
+        if _clearNewline:
+            self.filters["clearNewline"] = lambda b: regex.sub('^(?:[\t ]*(?:\r?\n|\r))+', '', b)
+
+    def format(self, buffer: str):
+        """
+        buffer'a girilen metni, nesnenin temizlik kurallarına göre işler ve işlenmiş string'i döndürür.
+        """
+        for filter_name, filter_func in self.filters.items():
+            buffer = filter_func(buffer)
+            print(buffer)
+        return buffer
