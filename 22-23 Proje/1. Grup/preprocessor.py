@@ -28,12 +28,12 @@ class Preprocessor:
             print(buffer)
         return buffer
             
-
-        
-        """ 
-        İlgili işlemin tanımını içeren lambda fonksiyonlarını tutan dict oluşturup sonrasında for döngüsünde 
-        her bir anahtar ve değere .items() metodunu kullanarak ulaşmak
-        """
+ 
+""" 
+03.04.2023
+İlgili işlemin tanımını içeren lambda fonksiyonlarını tutan dict oluşturup sonrasında for döngüsünde 
+her bir değere anahtar üzerinden .items() metodunu kullanarak ulaşmak
+"""
    
 import re as regex
 
