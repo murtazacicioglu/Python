@@ -1,0 +1,29 @@
+.active {
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: #37902f;
+  border-radius: 100%;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+}
+
+.register-button {
+  background: #37902f;
+  border: 1px solid #328d30;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 24px 0 24px 0;
+  transition: 0.3s;
+}
+
+.register-button:hover {
+  background-color: #34802d;
+  transition: 0.3s;
+}
