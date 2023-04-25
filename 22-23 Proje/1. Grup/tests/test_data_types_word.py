@@ -28,7 +28,10 @@ class TestSetRange(unittest.TestCase):
     def test_valid_range(self):
         instance = data_types.Word(16909060)
         instance.set_range(8, 23, "1111111100000000")
-        self.assertEqual(instance.as_binary(), "00000011111111100000000100000100")
+        self.assertEqual(instance.as_binary(), "00000001111111110000000000000100")
+        instance.from_binary("00000000000000000000000000000000")
+        instance.set_range(28, 31, "1111")
+        self.assertEqual(instance.as_binary(), "00000000000000000000000000001111")
 
     def test_invalid_start(self):
         instance = data_types.Word(16909060)
