@@ -80,8 +80,6 @@ class Instruction:
 
     def get_rs2(self):
         if self.type in {InstructionType.I, InstructionType.U, InstructionType.J}:
-            raise errors.InstructionTypeError(f"{self.type.name} tipli komutta RS1'e ulaşılmaya çalışıldı.")
-        return self.instruction.as_binary()[-20:-15]
             raise errors.InstructionTypeError(f"{self.type.name} tipli komutta RS2'e ulaşılmaya çalışıldı.")
         return self.instruction.as_binary()[-25:-20]
 
@@ -90,3 +88,7 @@ class Instruction:
             raise errors.InstructionTypeError(f"{self.type.name} tipli komutta FUNCT3'e ulaşılmaya çalışıldı.")
         return self.instruction.as_binary()[-15:-12]
 
+    def get_funct7(self):
+        if self.type != InstructionType.R:
+            raise errors.InstructionTypeError(f"{self.type.name} tipli komutta FUNCT7'e ulaşılmaya çalışıldı.")
+        return self.instruction.as_binary()[-32:-25]
