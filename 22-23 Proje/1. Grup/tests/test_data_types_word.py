@@ -27,26 +27,26 @@ class TestInit(unittest.TestCase):
 class TestSetRange(unittest.TestCase):
     def test_valid_range(self):
         instance = data_types.Word(16909060)
-        instance.set_range(8, 23, "1111111100000000")
+        instance.set_lrange(8, 23, "1111111100000000")
         self.assertEqual(instance.as_binary(), "00000001111111110000000000000100")
         instance.from_binary("00000000000000000000000000000000")
-        instance.set_range(28, 31, "1111")
+        instance.set_lrange(28, 31, "1111")
         self.assertEqual(instance.as_binary(), "00000000000000000000000000001111")
 
     def test_invalid_start(self):
         instance = data_types.Word(16909060)
         with self.assertRaises(ValueError):
-            instance.set_range(-5, 16, "11111111")
+            instance.set_lrange(-5, 16, "11111111")
 
     def test_invalid_end(self):
         instance = data_types.Word(16909060)
         with self.assertRaises(ValueError):
-            instance.set_range(8, 40, "11111111")
+            instance.set_lrange(8, 40, "11111111")
 
     def test_end_before_start(self):
         instance = data_types.Word(16909060)
         with self.assertRaises(ValueError):
-            instance.set_range(16, 8, "11111111")
+            instance.set_lrange(16, 8, "11111111")
 
 
 class TestAsBinary(unittest.TestCase):
