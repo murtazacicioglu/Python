@@ -8,14 +8,17 @@ import data_types
 
 class Instruction:
     type: str
+    mnemonic: str
     width = 32
     instruction = data_types.Word(0)
 
-    def __init__(self, inst_type: str):
+    def __init__(self, inst_type: str, binary_rep: str, mnemonic: str):
         inst_type = inst_type.lower()
         if inst_type != "r" and inst_type != "i" and inst_type != "sb" and inst_type != "uj":
             raise AttributeError("Instruction tipi R, I, SB veya UJ olmalı!")
         self.type = inst_type
+        self.mnemonic = mnemonic
+        self.instruction.from_binary(binary_rep)
 
     def set_opcode(self, int_value: int) -> None:
         """
@@ -58,3 +61,6 @@ class Instruction:
         :param int_value: Ayarlanacak sayı
         """
         self.instruction.set_rrange(31, 25, bin(int_value)[2:])
+
+    def get_opcode(self):
+        return self.instruction.as_binary()[-7:]
