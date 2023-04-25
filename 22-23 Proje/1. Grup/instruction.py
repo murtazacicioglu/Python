@@ -4,18 +4,20 @@
 #
 #       instruction.py
 import data_types
+from enum import Enum
+
+
+class InstructionType(Enum):
+    R, I, S, B, U, J = range(6)
 
 
 class Instruction:
-    type: str
+    type: InstructionType
     mnemonic: str
     width = 32
     instruction = data_types.Word(0)
 
-    def __init__(self, inst_type: str, binary_rep: str, mnemonic: str):
-        inst_type = inst_type.lower()
-        if inst_type != "r" and inst_type != "i" and inst_type != "sb" and inst_type != "uj":
-            raise AttributeError("Instruction tipi R, I, SB veya UJ olmalı!")
+    def __init__(self, inst_type: InstructionType, binary_rep: str, mnemonic: str):
         self.type = inst_type
         self.mnemonic = mnemonic
         self.instruction.from_binary(binary_rep)
@@ -66,6 +68,6 @@ class Instruction:
         return self.instruction.as_binary()[-7:]
 
     def get_rd(self):
-        if self.type == "sb":
+        if self.type == InstructionType.S or self.type == InstructionType.B:
             raise Exception("SB komutları rd içeremez!")
         return self.instruction.as_binary()[-12:-7]
