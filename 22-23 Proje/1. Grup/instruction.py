@@ -4,6 +4,7 @@
 #
 #       instruction.py
 import data_types
+import errors
 from enum import Enum
 
 
@@ -69,5 +70,5 @@ class Instruction:
 
     def get_rd(self):
         if self.type == InstructionType.S or self.type == InstructionType.B:
-            raise Exception("SB komutları rd içeremez!")
+            raise errors.InstructionTypeError(f"{self.type.name} tipli komutta RD'ye ulaşılmaya çalışıldı.")
         return self.instruction.as_binary()[-12:-7]
