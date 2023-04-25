@@ -69,6 +69,6 @@ class Instruction:
         return self.instruction.as_binary()[-7:]
 
     def get_rd(self):
-        if self.type == InstructionType.S or self.type == InstructionType.B:
+        if self.type in {InstructionType.S, InstructionType.B}:
             raise errors.InstructionTypeError(f"{self.type.name} tipli komutta RD'ye ulaşılmaya çalışıldı.")
         return self.instruction.as_binary()[-12:-7]
