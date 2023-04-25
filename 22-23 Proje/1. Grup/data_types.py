@@ -21,10 +21,10 @@ class Word:
 
     def set_range(self, start: int, end: int, replace_with: str):
         bin_rep = self.as_binary()
-        if start < 0 or end > len(bin_rep) or start > end:
+        if start < 0 or end >= len(bin_rep) or start > end:
             raise ValueError("Hatalı aralık.")
 
-        self.from_binary(bin_rep[:start] + replace_with + bin_rep[end:])
+        self.from_binary(bin_rep[:start] + replace_with + bin_rep[end + 1:])
 
     def from_binary(self, binary_value: str):
         """
