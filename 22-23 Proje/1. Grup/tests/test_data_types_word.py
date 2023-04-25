@@ -46,6 +46,28 @@ class TestAsBinary(unittest.TestCase):
         self.assertEqual(result, '10000000000000000000000000000000')
 
 
+class TestFromBinary(unittest.TestCase):
+    def test_from_binary_positive_value(self):
+        instance = data_types.Word(0)
+        instance.from_binary('00000000000000000000000001100100')
+        self.assertEqual(instance.value, 100)
+
+    def test_from_binary_negative_value(self):
+        instance = data_types.Word(0)
+        instance.from_binary('11111111111111111111111111001110')
+        self.assertEqual(instance.value, -50)
+
+    def test_from_binary_max_value(self):
+        instance = data_types.Word(0)
+        instance.from_binary('01111111111111111111111111111111')
+        self.assertEqual(instance.value, 2147483647)
+
+    def test_from_binary_min_value(self):
+        instance = data_types.Word(0)
+        instance.from_binary('10000000000000000000000000000000')
+        self.assertEqual(instance.value, -2147483648)
+
+
 class TestAsHexadecimal(unittest.TestCase):
     def test_as_hexadecimal_positive_value(self):
         instance = data_types.Word(100)
