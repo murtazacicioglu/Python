@@ -19,12 +19,15 @@ class Word:
         """
         self._value = c_int32(int_value)
 
-    def set_range(self, start: int, end: int, replace_with: str):
+    def set_lrange(self, start: int, end: int, replace_with: str):
         bin_rep = self.as_binary()
         if start < 0 or end >= len(bin_rep) or start > end:
             raise ValueError("Hatalı aralık.")
 
         self.from_binary(bin_rep[:start] + replace_with + bin_rep[end + 1:])
+
+    def set_rrange(self, start: int, end: int, replace_with: str):
+        self.set_lrange(31 - start, 31 - end, replace_with)
 
     def from_binary(self, binary_value: str):
         """
