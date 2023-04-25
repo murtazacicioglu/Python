@@ -19,6 +19,15 @@ class Word:
         """
         self._value = c_int32(int_value)
 
+    def from_binary(self, binary_value: str):
+        """
+        Kelimenin değerini verilen ikili değer olacak şekilde günceller.
+
+        :param binary_value: Kelimenin tutacağı değerin ikili gösterimi
+        """
+        n = int(binary_value, 2)
+        self._value = c_int32(n - (1 << 32) if n & (1 << 31) else n)
+
     def as_binary(self):
         """
         Kelimenin tuttuğu değerin ikinin tümleyeni biçimindeki ikili gösterimini döndürür.
