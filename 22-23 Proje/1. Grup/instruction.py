@@ -82,3 +82,5 @@ class Instruction:
         if self.type in {InstructionType.I, InstructionType.U, InstructionType.J}:
             raise errors.InstructionTypeError(f"{self.type.name} tipli komutta RS1'e ulaşılmaya çalışıldı.")
         return self.instruction.as_binary()[-20:-15]
+            raise errors.InstructionTypeError(f"{self.type.name} tipli komutta RS2'e ulaşılmaya çalışıldı.")
+        return self.instruction.as_binary()[-25:-20]
