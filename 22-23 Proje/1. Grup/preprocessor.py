@@ -1,53 +1,23 @@
 #!/usr/bin/env python3
 #
-#         Ferit Yiğit BALABAN <fybalaban@fybx.dev>
-#         Sabir SÜLEYMANLI <suleymanlisabir3@gmail.com>
+#       Ferit Yiğit BALABAN <fybalaban@fybx.dev>
+#       Sabir SÜLEYMANLI <suleymanlisabir3@gmail.com>
 #
+#       preprocessor.py
 import re as regex
 
 
 class Preprocessor:
-    def __init__(self, _trimSpaces=True, _clearComments=True, _clearNewline=True):
-        self.trimSpaces = _trimSpaces
-        self.clearComments = _clearComments
-        self.clearNewline = _clearNewline
-
-
-    def format(self, buffer: str):
-        """
-        buffer'a girilen metni, nesnenin temizlik kurallarına göre işler ve işlenmiş string'i döndürür.
-        """
-        if self.trimSpaces:
-            buffer = regex.sub('[\t ]+', ' ', buffer).strip()
-            print(buffer)
-        if self.clearComments:
-            buffer = regex.sub('\s*;.+', '', buffer)
-            print(buffer)
-        if self.clearNewline:
-            buffer = regex.sub('^(?:[\t ]*(?:\r?\n|\r))+', '', buffer)
-            print(buffer)
-        return buffer
-            
- 
-""" 
-03.04.2023
-İlgili işlemin tanımını içeren lambda fonksiyonlarını tutan dict oluşturup sonrasında for döngüsünde 
-her bir değere anahtar üzerinden .items() metodunu kullanarak ulaşmak
-"""
-   
-import re as regex
-
-class Preprocessor:
-    def __init__(self, _trimSpaces=True, _clearComments=True, _clearNewline=True):
+    def __init__(self, trim_spaces=True, clear_comments=True, clear_newline=True):
         self.filters = {}
-        if _trimSpaces:
-            self.filters["trimSpaces"] = lambda b: regex.sub('[\t ]+', ' ', b).strip()
-        if _clearComments:
-            self.filters["clearComments"] = lambda b: regex.sub('\s*;.+', '', b)
-        if _clearNewline:
-            self.filters["clearNewline"] = lambda b: regex.sub('^(?:[\t ]*(?:\r?\n|\r))+', '', b)
+        if trim_spaces:
+            self.filters["trim_spaces"] = lambda b: regex.sub('[\t ]+', ' ', b).strip()
+        if clear_comments:
+            self.filters["clear_comments"] = lambda b: regex.sub('\s*;.+', '', b)
+        if clear_newline:
+            self.filters["clear_newline"] = lambda b: regex.sub('^(?:[\t ]*(?:\r?\n|\r))+', '', b)
 
-    def format(self, buffer: str):
+    def format(self, buffer: str) -> str:
         """
         buffer'a girilen metni, nesnenin temizlik kurallarına göre işler ve işlenmiş string'i döndürür.
         """
