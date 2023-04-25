@@ -64,3 +64,8 @@ class Instruction:
 
     def get_opcode(self):
         return self.instruction.as_binary()[-7:]
+
+    def get_rd(self):
+        if self.type == "sb":
+            raise Exception("SB komutları rd içeremez!")
+        return self.instruction.as_binary()[-12:-7]
