@@ -19,6 +19,21 @@ class Test_DataTypes(unittest.TestCase):
         w = dt.Word(4294967296)
         self.assertEqual(w.value, 0)
 
+    def test_binary(self):
+        w = dt.Word(0)
+        self.assertEqual(w.as_binary(), "00000000000000000000000000000000")
+
+        w = dt.Word(32)
+        self.assertEqual(w.as_binary(), "00000000000000000000000000100000")
+        w = dt.Word(-32)
+        self.assertEqual(w.as_binary(), "11111111111111111111111111100000")
+
+        # overflow olmalı
+        w = dt.Word(4294967296)
+        self.assertEqual(w.as_binary(), "00000000000000000000000000000000")
+        w = dt.Word(4294967295)
+        self.assertEqual(w.as_binary(), "11111111111111111111111111111111")
+
 
 if __name__ == '__main__':
     unittest.main()
