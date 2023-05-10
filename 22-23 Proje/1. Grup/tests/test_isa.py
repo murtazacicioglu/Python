@@ -5,7 +5,7 @@ from data_types import Word
 from isa import isa_add
 
 
-class Test_ISA_add(TestCase):
+class TestIsaAdd(TestCase):
     def test_isa_add_positive_numbers(self):
         proc = processor.Processor()
         proc.registers['x1'] = Word(10)
