@@ -8,7 +8,7 @@
 | inv      | `inv rd`           | `rd` ← (-1 * `rd`)                     |
 | sub      | `sub rd, rs1, rs2` | `rd` ← (`rs1` - `rs2`)                 |
 | slt      | `slt rd, rs1, rs2` | `rd` ← (`rs1` < `rs2` ? `rs1` : `rs2`) |
-| nop      | `nop`              | `rd` ← `rd`                            |
+| nop      | `nop`              | `x0` ← `x0`                            |
 
 ### Bellek Komutları
 
