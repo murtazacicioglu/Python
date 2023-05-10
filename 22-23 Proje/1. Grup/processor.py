@@ -42,3 +42,10 @@ class Processor:
             'x30': Word(0),
             'x31': Word(0)
         }
+        self.flags = {
+            "C": Word(0),
+            "Z": Word(0),
+            "N": Word(0),
+            "V": Word(0),
+            "XLEN": Word(32)
+        }
