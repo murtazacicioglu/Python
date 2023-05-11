@@ -65,3 +65,8 @@ def isa_lfm(proc: processor.Processor, mem: memory.Memory, rd: str, hex_value: s
     _rd = mem.read_memory(Word(0).from_hex(hex_value[:-1]))
     proc.registers[rd] = _rd
 
+
+def isa_stm(proc: processor.Processor, mem: memory.Memory, rd: str, hex_value: str):
+    _rd = proc.registers[rd]
+    mem.set_memory(Word(0).from_hex(hex_value[:-1]), _rd)
+
