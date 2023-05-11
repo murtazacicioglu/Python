@@ -1,6 +1,6 @@
 .global
-    lfm x1, [0x00] ; 0x00 adresinden değer oku, x1'de sakla
-    lfm x2, [0x01] ; 0x01 adresinden değer oku, x2'de sakla
+    lfm x1, [00h] ; 0x00 adresinden değer oku, x1'de sakla
+    lfm x2, [01h] ; 0x01 adresinden değer oku, x2'de sakla
     jmp mul        ; mul section'ına atla
     mvi x1, 1h     ; x1'de 1 değerini sakla
     mvi x3, 1h     ; x3'te 1 değerini sakla
