@@ -17,6 +17,7 @@
 | `lfm`    | `lfm rd, [hex_value]h` | Belleğin `hex_value` adresinde yer alan değerini `rd` yazmacına yükler |
 | `stm`    | `stm rd, [hex_value]h` | Belleğin `hex_value` adresinde `rd` yazmacındaki değeri saklar         |
 | `mov`    | `mov rd, rs1`          | `rd` ← `rs1`                                                           |
+| `mvi`    | `mvi rd, [hex_value]h` | `rd` ← `hex_value`                                                     |
 
 ### Mantıksal Komutlar
 
@@ -37,6 +38,7 @@
 | `bne`    | `bne rs1, rs2, section` | `rs1` != `rs2` ? `jmp section` : `nop`                       |
 | `bge`    | `bge rs1, rs2, section` | `rs1` >= `rs2` ? `jmp section` : `nop`                       |
 | `ble`    | `ble rs1, rs2, section` | `rs1` <= `rs2` ? `jmp section` : `nop`                       |
+
 
 ### Ek
 
