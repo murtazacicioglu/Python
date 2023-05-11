@@ -49,6 +49,14 @@ class Word:
         """
         return format(self._value.value % (1 << self._width), '0{}b'.format(self._width))
 
+    def from_hex(self, hex_value: str):
+        """
+        Kelimenin değerini verilen onaltılı değer olacak şekilde günceller.
+
+        :param hex_value: Kelimenin tutacağı değerin onaltılık gösterimi
+        """
+        return self.from_binary(bin(int(hex_value, 16))[2:])
+
     def as_hexadecimal(self):
         return hex(self._value.value)
 
