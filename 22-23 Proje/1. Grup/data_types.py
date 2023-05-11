@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 #
-#         Ferit Yiğit BALABAN <fybalaban@fybx.dev>
+#       Ferit Yiğit BALABAN <fybalaban@fybx.dev>
 #
+#       data_types.py
 from ctypes import c_int32
 
 
@@ -37,6 +38,7 @@ class Word:
         """
         n = int(binary_value, 2)
         self._value = c_int32(n - (1 << 32) if n & (1 << 31) else n)
+        return self
 
     def as_binary(self):
         """
@@ -47,8 +49,16 @@ class Word:
         """
         return format(self._value.value % (1 << self._width), '0{}b'.format(self._width))
 
+    def from_hex(self, hex_value: str):
+        """
+        Kelimenin değerini verilen onaltılı değer olacak şekilde günceller.
+
+        :param hex_value: Kelimenin tutacağı değerin onaltılık gösterimi
+        """
+        return self.from_binary(bin(int(hex_value, 16))[2:])
+
     def as_hexadecimal(self):
-        return hex(self._value.value)
+        return hex(self._value.value).upper()[2:]
 
     @property
     def value(self):

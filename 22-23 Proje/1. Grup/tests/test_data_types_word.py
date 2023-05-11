@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 #
-#         Ferit Yiğit BALABAN <fybalaban@fybx.dev>
+#       Ferit Yiğit BALABAN <fybalaban@fybx.dev>
 #
+#       test_data_types_word.py
 import unittest
 import data_types
 
