@@ -58,7 +58,7 @@ class Word:
         return self.from_binary(bin(int(hex_value, 16))[2:])
 
     def as_hexadecimal(self):
-        return hex(self._value.value)
+        return hex(self._value.value).upper()[2:]
 
     @property
     def value(self):
