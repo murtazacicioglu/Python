@@ -8,6 +8,7 @@ from data_types import Word
 
 class Processor:
     def __init__(self):
+        self.prog_counter = Word(0)
         self.registers = {
             'x0': Word(0),
             'x1': Word(0),
