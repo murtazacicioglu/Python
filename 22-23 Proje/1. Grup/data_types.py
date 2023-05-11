@@ -38,6 +38,7 @@ class Word:
         """
         n = int(binary_value, 2)
         self._value = c_int32(n - (1 << 32) if n & (1 << 31) else n)
+        return self
 
     def as_binary(self):
         """
