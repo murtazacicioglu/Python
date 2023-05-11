@@ -70,3 +70,8 @@ def isa_stm(proc: processor.Processor, mem: memory.Memory, rd: str, hex_value: s
     _rd = proc.registers[rd]
     mem.set_memory(Word(0).from_hex(hex_value[:-1]), _rd)
 
+
+def isa_mov(proc: processor.Processor, rd: str, rs1: str):
+    _rs1 = proc.registers[rs1]
+    proc.registers[rd] = _rs1
+
