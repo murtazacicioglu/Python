@@ -4,6 +4,7 @@
 #
 #       isa.py
 import processor
+import memory
 from data_types import Word
 
 
@@ -58,3 +59,9 @@ def isa_nop(proc: processor.Processor):
     proc.flags["Z"] = Word(0)
     proc.flags["S"] = Word(0)
     proc.flags["V"] = Word(0)
+
+
+def isa_lfm(proc: processor.Processor, mem: memory.Memory, rd: str, hex_value: str):
+    _rd = mem.read_memory(Word(0).from_hex(hex_value[:-1]))
+    proc.registers[rd] = _rd
+
