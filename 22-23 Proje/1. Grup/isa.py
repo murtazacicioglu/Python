@@ -45,6 +45,13 @@ def isa_sub(proc: processor.Processor, rd: str, rs1: str, rs2: str):
     proc.flags["V"] = Word(1 if (_rs1 > 0 > _rs2 and _rd.value < 0) or (_rs1 < 0 < _rs2 and _rd.value > 0) else 0)
     proc.registers[rd] = _rd
 
+
+def isa_slt(proc: processor.Processor, rd: str, rs1: str, rs2: str):
+    _rs1 = proc.registers[rs1].value
+    _rs2 = proc.registers[rs2].value
+    proc.registers[rd] = Word(_rs1 if _rs1 < _rs2 else _rs2)
+
+
 def isa_nop(proc: processor.Processor):
     proc.registers["x0"] = Word(proc.registers["x0"].value)
     proc.flags["C"] = Word(0)
