@@ -22,7 +22,14 @@ def isa_add(proc: processor.Processor, rd: str, rs1: str, rs2: str):
 
 
 def isa_inv(proc: processor.Processor, rd: str):
-    proc.registers[rd] = Word(-1 * proc.registers[rd].value)
+    _prev_rd = proc.registers[rd].value
+    _rd = Word(-1 * proc.registers[rd].value)
+
+    # carry bayrağı hesaplama, işaretsiz sayı desteği yok
+    proc.flags["Z"] = Word(1 if _rd.value == 0 else 0)
+    proc.flags["S"] = Word(0 if _rd.value >= 0 else 1)
+    proc.flags["V"] = Word(1 if _prev_rd == _rd.value else 0)
+    proc.registers[rd] = _rd
 
 
 def isa_sub(proc: processor.Processor, rd: str, rs1: str, rs2: str):
