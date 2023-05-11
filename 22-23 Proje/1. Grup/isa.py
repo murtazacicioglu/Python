@@ -75,3 +75,7 @@ def isa_mov(proc: processor.Processor, rd: str, rs1: str):
     _rs1 = proc.registers[rs1]
     proc.registers[rd] = _rs1
 
+
+def isa_mvi(proc: processor.Processor, rd: str, hex_value: str):
+    _rd = Word(0).from_hex(hex_value[:-1])
+    proc.registers[rd] = _rd
