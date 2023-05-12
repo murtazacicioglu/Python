@@ -19,3 +19,11 @@ class Engine:
         self.__parser.parse_code(source_code)
         self.__parser.load_to_memory(self.__ram)
 
+    def set_frequency(self, frequency: float):
+        """
+        Çalıştırma motorunun her işlem arasına getirdiği gecikmeyi milisaniye cinsinden ayarlar.
+        Gecikme (ms) = 1000 / frequency
+        :param frequency: Saniye başına satır çalıştırma hızı
+        """
+        self.__delay = 1000 / frequency
+
