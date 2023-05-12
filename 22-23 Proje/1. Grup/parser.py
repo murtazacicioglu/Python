@@ -9,6 +9,7 @@ import preprocessor
 
 
 BRANCHING = ["jmp", "beq", "bne", "bge", "ble"]
+MEMACCESS = ["lfm", "stm"]
 
 
 class Parser:
@@ -41,7 +42,7 @@ class Parser:
                     intermediate_code.append(instruction[0])
 
         for i, line in enumerate(intermediate_code):
-            if line[0:3] in BRANCHING:
+            if line[0:3] in BRANCHING or line[0:3] in MEMACCESS:
                 parts = line.split()
                 section = parts[-1]
                 if section in sections.keys():
