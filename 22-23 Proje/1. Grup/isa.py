@@ -84,3 +84,13 @@ def isa_jmp(proc: processor.Processor, section: Word):
     proc.registers["x30"] = proc.prog_counter
     proc.prog_counter = section
 
+
+def isa_ble(proc: processor.Processor, rs1: str, rs2: str, section: Word):
+    _rs1 = proc.registers[rs1].value
+    _rs2 = proc.registers[rs2].value
+    if _rs1 <= _rs2:
+        isa_jmp(proc, section)
+
+
+def isa_cll(proc: processor.Processor):
+    pass
