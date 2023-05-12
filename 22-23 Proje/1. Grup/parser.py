@@ -5,6 +5,7 @@
 #       parser.py
 import data_types
 import memory
+import preprocessor
 
 
 BRANCHING = ["jmp", "beq", "bne", "bge", "ble"]
@@ -62,7 +63,9 @@ class Parser:
         Kaynak kodu parse ederek orta formata çevirir ve __intermediate özelliğinde saklar.
         :param source_code: Assembly kaynak kodu
         """
-        self.__intermediate = self.__parse_code(source_code)
+        pp = preprocessor.Preprocessor()
+        clean_code = pp.format(source_code)
+        self.__intermediate = self.__parse_code(clean_code)
 
     def load_to_memory(self, mem: memory.Memory) -> None:
         """
