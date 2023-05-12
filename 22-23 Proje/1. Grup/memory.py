@@ -11,6 +11,7 @@ class Memory:
         self.__lower_boundary = Word(0).from_binary("00000000000000000000000000000000")
         self.__upper_boundary = Word(0).from_binary("01111111111111111111111111111111")
         self.__memory = {}
+        self.__code_memory = []
 
     def set_memory(self, address: Word, value: Word):
         if self.__lower_boundary.value > address.value or address.value > self.__upper_boundary.value:
@@ -37,3 +38,11 @@ class Memory:
 
         for key, value in self.__memory.items():
             print(f"{key.as_hexadecimal()}h: {value.as_hexadecimal()}h")
+
+    def store_code(self, line: str):
+        self.__code_memory.append(line)
+
+    def read_code(self, address: Word) -> str:
+        if 0 > address.value or address.value >= len(self.__code_memory):
+            raise Exception("Erişilmek istenen adres sınırların dışında")
+        return self.__code_memory[address.value]
