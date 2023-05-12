@@ -57,3 +57,10 @@ class Parser:
                 intermediate_code[i] = " ".join(parts)
         return intermediate_code
 
+    def parse_code(self, source_code: str) -> None:
+        """
+        Kaynak kodu parse ederek orta formata çevirir ve __intermediate özelliğinde saklar.
+        :param source_code: Assembly kaynak kodu
+        """
+        self.__intermediate = self.__parse_code(source_code)
+
