@@ -24,5 +24,4 @@ class Preprocessor:
         """
         for filter_name, filter_func in self.filters.items():
             buffer = filter_func(buffer)
-            print(buffer)
         return buffer
