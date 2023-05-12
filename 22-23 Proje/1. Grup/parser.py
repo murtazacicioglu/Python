@@ -10,3 +10,7 @@ import memory
 BRANCHING = ["jmp", "beq", "bne", "bge", "ble"]
 
 
+class Parser:
+    def __init__(self):
+        self.__intermediate = ""
+
