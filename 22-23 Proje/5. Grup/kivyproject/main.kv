@@ -1,0 +1,343 @@
+#: import utils kivy.utils
+
+HomePage:
+
+<HomePage>:
+    canvas:
+        Color:
+            rgba: (255/255, 245/255, 157/255,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    MDCard:
+        size_hint: None, None
+        size: "300dp", "400dp"
+        pos_hint:{"center_x":0.5,"center_y":0.5}
+        elevation: 10
+        radius: "15dp"
+        padding: "25dp"
+        spacing: "25dp"
+
+        orientation: "vertical"
+
+        MDLabel:
+            id: welcome_label
+            font_name: 'fonts/Pacifico-Regular.ttf'
+            text: "Kitapp"
+            font_size: "37sp"
+            halign:"center"
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: "10dp"
+
+        MDTextFieldRound:
+            id: user
+            text:""
+            hint_text: "Kullanıcı Adı"
+            icon_right: "account"
+            size_hint_y: None
+            height: "48dp"
+            font_size: "20sp"
+            pos_hint: {"center_x": 0.5}
+
+        MDTextFieldRound:
+            id: password
+            text: ""
+            hint_text: "Şifre"
+            icon_right: "eye-off"
+            size_hint_y: None
+            height: "48dp"
+            font_size: "20sp"
+            pos_hint: {"center_x": 0.5}
+            password:True
+
+        MDRoundFlatButton:
+            text: "Giriş Yap"
+            font_size: "15sp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            size_hint_x: None
+            width: "150dp"
+            on_press: root.logger()
+
+        MDRoundFlatButton:
+            text: "Üye Olmadan Giriş Yap"
+            font_size: "15sp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.25}
+            size_hint_x: None
+            width: "200dp"
+            on_press: root.giris()
+
+        Widget:
+            size_hint_y: None
+            height: "10dp"
+            
+
+
+<LoginWindow>:
+
+    BoxLayout:
+        orientation: "vertical"
+        
+
+        MDBottomNavigation:
+            panel_color: utils.get_color_from_hex("#FFF59D")
+
+            
+            MDBottomNavigationItem:
+                name: "screen 1"
+                text: "Kitaplar"
+                icon: "book"
+                
+
+                ScrollView:
+                    MDList:
+                        id: book_list
+
+            MDBottomNavigationItem:
+                name: "screen 2"
+                text: "Kitap Tespit"
+                icon: "camera"                            
+                
+                MDFloatLayout:
+                    orientation: "vertical"
+                    md_bg_color: utils.get_color_from_hex("#FFFFFF")
+
+                    Image:
+                        id: captured_image
+                        source: "book_finder.png"
+                        size_hint: None, None
+                        size: 300, 300
+                        pos_hint: {"center_x":0.5,"center_y":0.5}
+
+                    
+
+                    MDRoundFlatButton:
+                        text: "Kitabı Tara"
+                        font_size: 12
+                        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+                        on_release: root.manager.current = "FirstWindow"
+
+
+            MDBottomNavigationItem:
+                name: "screen 3"
+                text: "Ara"
+                icon: "magnify"
+
+                MDBoxLayout:
+                    md_bg_color: utils.get_color_from_hex("#FFFFFF")
+                    orientation: "vertical"
+
+
+                    MDTextField:
+                        id: search_field
+                        hint_text: "Aranacak Kitap"
+                        icon_right: "book"
+                        on_text:root.set_list(self.text)
+
+                        pos_hint: {"x": 0,"top": 0.97,"right":0.9}
+                        font_size: 16
+                        mode: "rectangle"
+                        size_hint: (0.8, 0.1)
+                        text_color_normal: "red"
+                        line_color_focus: 0, 0, 0, 1   # seçili iken kenar çizgisi rengi
+                        color_active: 0, 0, 0, 1       # seçili iken yazı rengi
+                        color_normal: 0, 0, 0, 1       # seçilmediği zaman yazı rengi
+                    
+                    RecycleView:
+                        pos_hint: {"x": 0,"top": 0.85,"left":0.5}
+
+                        MDList:
+                            id: container
+
+
+            MDBottomNavigationItem:
+                name: "screen 4"
+                text: "Menü"
+                icon: "dots-horizontal-circle-outline"
+
+                OneLineListItem:
+                    text: "Hesaptan Çık"
+                    font_size: 12
+                    pos_hint: {"x": 0, "y": 0.9}
+                    on_release: root.manager.current = "HomePage"
+                
+                OneLineListItem:
+                    text: "Emeği Geçenler"
+                    font_size: 12
+                    pos_hint: {"x": 0, "y": 0.8}
+                    on_release: root.manager.current = "Hakkimizda"
+
+
+
+
+<FirstWindow>:
+
+    MDRoundFlatButton:
+        id: kameraAc
+        text: 'Kamera Aç'
+        size_hint:(0.2,0.1)
+        pos_hint: {"center_x":0.5,"center_y":0.5}
+        on_release: root.calisKamera() 
+    
+    MDRoundFlatButton:
+        id: geriDon
+        text: 'Geri'
+        size_hint:(0.2,0.1)
+        pos_hint: {"center_x":0.5,"center_y":0.37}
+        on_release: root.manager.current = "LoginWindow"
+
+    BoxLayout:
+        id: kameraArayuz
+        orientation: 'vertical'
+        
+        
+       
+
+<BookWindow>:
+
+    MDToolbar:
+        id: kitaplar
+        md_bg_color: (255/255, 245/255, 157/255,1)
+        specific_text_color: (96/255, 125/255, 139/255,1)
+        pos_hint: {"top": 1}
+        title: "Title"
+        left_action_items: [["arrow-left", lambda x: app.root.get_screen("LoginWindow").goBack()]]
+
+    Image:
+        id: kitapResim  
+        source: ''
+        size_hint: (0.37, 0.38)
+        pos_hint: {'x': 0, 'y': 0.5}
+
+    MDBoxLayout:
+        orientation: "vertical"
+        id: yapi
+        size_hint: (0.5, 0.1)
+        pos_hint: {'x': 0.5, 'y': 0.79}
+
+        MDLabel:
+            id: yazar
+            text: "Merhaba"
+        
+        MDLabel:
+            id: kategori
+            text: "Merhaba"
+
+    MDBoxLayout:
+        orientation:"vertical"
+        id: yapi2
+        size_hint: (0.5, 0.1)
+        pos_hint: {'x': 0.5, 'y': 0.69}
+        
+        MDRoundFlatButton:
+            id: Yorumlar
+            text: "Yorumlar"
+            on_release: root.manager.current = "Comments"
+
+    MDBoxLayout:
+        orientation:"vertical"
+        id: yapi3
+        size_hint: (1, 0.45)
+        pos_hint: {'x': 0, 'y': 0}
+        
+        MDLabel:
+            id: aciklama
+            text: "Burada kitap hakkındaki açıklama bulunacak"
+            padding_x: "20dp"
+
+
+<Comments>:
+
+    MDToolbar:
+        id: yorumBaslik
+        md_bg_color: (255/255, 245/255, 157/255,1)
+        specific_text_color: (96/255, 125/255, 139/255,1)
+        pos_hint: {"top": 1, "height": 0.1}
+        title: "Title"
+        left_action_items: [["arrow-left", lambda x: app.root.get_screen("Comments").goBack()]]
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: 0.9
+
+        ScrollView:
+            MDList:
+                id: yorumlar
+
+        MDRoundFlatButton:
+            text:"Yorum Yap"
+            pos_hint:{'center_x': 0.5}
+            on_release: root.manager.current = "YorumYap"
+
+
+<Hakkimizda>:
+
+    MDToolbar:
+        md_bg_color: (255/255, 245/255, 157/255,1)
+        specific_text_color: (96/255, 125/255, 139/255,1)
+        pos_hint: {"top": 1}
+        title: "Emeği Geçenler"
+        left_action_items: [["arrow-left", lambda x: app.root.get_screen("LoginWindow").goBack()]]
+
+    BoxLayout:
+        orientation: "vertical"
+
+        MDLabel:
+            font_name: 'fonts/Pacifico-Regular.ttf'
+            text: "PYTHON KITAPP\n\nUmut Can Oral\nMuhammet Güven\nMehmet Kaan Genç"
+            font_size: "37sp"
+            halign: "center"
+            valign: "top"
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: "10dp"
+
+
+<YorumYap>:
+
+    canvas:
+        Color:
+            rgba: (255/255, 245/255, 157/255,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    MDCard:
+        size_hint: None, None
+        size: "500dp", "500dp"
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        orientation: "vertical"
+        elevation: 10
+        radius: "15dp"
+
+        MDTextField:
+            id: yorum
+            text: ""
+            hint_text: "Yorumun"
+            icon_right: "account"
+            size_hint_y: None
+            size: "400dp", "400dp"
+            font_size: "20sp"
+            pos_hint: {"center_x": 0.5}
+            multiline: True
+
+        MDRoundFlatButton:
+            text: "Gönder"
+            font_size: "15sp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            size_hint_x: None
+            width: "150dp"
+            on_press: root.yorumYaz()
+
+        MDRoundFlatButton:
+            text: "Vazgeç"
+            font_size: "15sp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.25}
+            size_hint_x: None
+            width: "200dp"
+            on_press: root.geriDon()
+            
+        Widget:
+            size_hint_y: None
+            height: "10dp"
