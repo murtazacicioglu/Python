@@ -3,11 +3,12 @@
 #       Ferit Yiğit BALABAN, <fybalaban@fybx.dev>
 #
 #       processor.py
+import memory
 from data_types import Word
 
 
 class Processor:
-    def __init__(self):
+    def __init__(self, mem: memory.Memory):
         self.prog_counter = Word(0)
         self.registers = {
             'x0': Word(0),
