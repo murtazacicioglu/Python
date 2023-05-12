@@ -81,9 +81,63 @@ def isa_mvi(proc: processor.Processor, rd: str, hex_value: str):
     proc.registers[rd] = _rd
 
 
+def isa_and(proc: processor.Processor, rd: str, rs1: str, rs2: str):
+    _rs1 = proc.registers[rs1].value
+    _rs2 = proc.registers[rs2].value
+    _rd = Word(_rs1 & _rs2)
+
+    proc.registers[rd] = _rd
+
+
+def isa_or(proc: processor.Processor, rd: str, rs1: str, rs2: str):
+    _rs1 = proc.registers[rs1].value
+    _rs2 = proc.registers[rs2].value
+    _rd = Word(_rs1 | _rs2)
+
+    proc.registers[rd] = _rd
+
+
+def isa_xor(proc: processor.Processor, rd: str, rs1: str, rs2: str):
+    _rs1 = proc.registers[rs1].value
+    _rs2 = proc.registers[rs2].value
+    _rd = Word(_rs1 ^ _rs2)
+
+    proc.registers[rd] = _rd
+
+
+def isa_shl(proc: processor.Processor, rd: str, rs1: str, rs2: str):
+    _rep = proc.registers[rs1].as_binary()
+    _rs2 = proc.registers[rs2].value
+
+    for i in range(0, _rs2):
+        _rep = _rep[1:]
+        _rep += "0"
+
+    proc.registers[rd] = Word(0).from_binary(_rep)
+
+
+def isa_shr(proc: processor.Processor, rd: str, rs1: str, rs2: str):
+    _rep = proc.registers[rs1].as_binary()
+    _rs2 = proc.registers[rs2].value
+
+    for i in range(0, _rs2):
+        _rep = _rep[:-1]
+        _rep = "0" + _rep
+
+    proc.registers[rd] = Word(0).from_binary(_rep)
+
+
 def isa_jmp(proc: processor.Processor, section: Word):
     proc.registers["x30"] = proc.prog_counter
     proc.prog_counter = section
+
+
+def isa_ble(proc: processor.Processor, rs1: str, rs2: str, section: Word):
+    _rs1 = proc.registers[rs1].value
+    _rs2 = proc.registers[rs2].value
+    if _rs1 <= _rs2:
+        isa_jmp(proc, section)
+
 
 def isa_cll(proc: processor.Processor):
     pass
