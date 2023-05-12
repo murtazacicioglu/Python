@@ -80,5 +80,10 @@ def isa_mvi(proc: processor.Processor, rd: str, hex_value: str):
     _rd = Word(0).from_hex(hex_value[:-1])
     proc.registers[rd] = _rd
 
+
+def isa_jmp(proc: processor.Processor, section: Word):
+    proc.registers["x30"] = proc.prog_counter
+    proc.prog_counter = section
+
 def isa_cll(proc: processor.Processor):
     pass
