@@ -64,3 +64,10 @@ class Parser:
         """
         self.__intermediate = self.__parse_code(source_code)
 
+    def load_to_memory(self, mem: memory.Memory) -> None:
+        """
+        __intermediate özelliğinde tutulan orta formattaki kodu verilen belleğe yükler.
+        :param mem: Kodun yükleneceği bellek nesnesi
+        """
+        for line in self.__intermediate:
+            mem.store_code(line)
