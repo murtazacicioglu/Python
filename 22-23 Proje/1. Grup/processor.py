@@ -51,3 +51,5 @@ class Processor:
             "V": Word(0),
             "XLEN": Word(32)
         }
+        self.memory = mem
+
