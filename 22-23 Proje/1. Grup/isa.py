@@ -96,6 +96,14 @@ def isa_or(proc: processor.Processor, rd: str, rs1: str, rs2: str):
 
     proc.registers[rd] = _rd
 
+
+def isa_xor(proc: processor.Processor, rd: str, rs1: str, rs2: str):
+    _rs1 = proc.registers[rs1].value
+    _rs2 = proc.registers[rs2].value
+    _rd = Word(_rs1 ^ _rs2)
+
+    proc.registers[rd] = _rd
+
 def isa_jmp(proc: processor.Processor, section: Word):
     proc.registers["x30"] = proc.prog_counter
     proc.prog_counter = section
