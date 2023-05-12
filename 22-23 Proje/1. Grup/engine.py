@@ -27,3 +27,10 @@ class Engine:
         """
         self.__delay = 1000 / frequency
 
+    def get_frequency(self) -> float:
+        """
+        Motorun çalışma frekansını döndürür.
+        :return: Çalışma frekansı olan tam sayı
+        """
+        return 1000 / self.__delay
+
