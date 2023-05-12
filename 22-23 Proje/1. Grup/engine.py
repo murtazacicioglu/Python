@@ -15,3 +15,7 @@ class Engine:
         self.__parser = parser.Parser()
         self.__delay = 1
 
+    def load_source_code(self, source_code: str):
+        self.__parser.parse_code(source_code)
+        self.__parser.load_to_memory(self.__ram)
+
