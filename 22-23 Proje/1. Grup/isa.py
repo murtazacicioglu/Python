@@ -127,12 +127,12 @@ def isa_shr(proc: processor.Processor, rd: str, rs1: str, rs2: str):
     proc.registers[rd] = Word(0).from_binary(_rep)
 
 
-def isa_jmp(proc: processor.Processor, section: Word):
+def isa_jmp(proc: processor.Processor, section: str):
     proc.registers["x30"] = proc.prog_counter
-    proc.prog_counter = section
+    proc.prog_counter = Word(0).from_hex(section[:-1])
 
 
-def isa_ble(proc: processor.Processor, rs1: str, rs2: str, section: Word):
+def isa_ble(proc: processor.Processor, rs1: str, rs2: str, section: str):
     _rs1 = proc.registers[rs1].value
     _rs2 = proc.registers[rs2].value
     if _rs1 <= _rs2:
