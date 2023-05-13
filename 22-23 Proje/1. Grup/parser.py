@@ -61,7 +61,7 @@ class Parser:
                     intermediate_code.append(f"mvi x1 {data_types.Word(0).from_utf8(char).as_hexadecimal()}h")
                     intermediate_code.append(f"stm x1 {data_types.Word(mem_offset).as_hexadecimal()}h")
                     mem_offset += 1
-                intermediate_code.append(f"mvi x1 x0")
+                intermediate_code.append(f"mov x1 x0")
                 intermediate_code.append(f"stm x1 {data_types.Word(mem_offset).as_hexadecimal()}h")
                 mem_offset += 1
 
