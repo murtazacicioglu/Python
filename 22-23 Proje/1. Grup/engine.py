@@ -78,5 +78,3 @@ class Engine:
                     print(next_char.as_utf8(), end="")
                     _iter = data_types.Word(_iter.value + 1)
                     next_char = self.__ram.read_memory(_iter)
-                print("")
-
