@@ -49,6 +49,8 @@ class Engine:
             print(f"x0: {self.__cpu.registers['x0'].as_hexadecimal()} "
                   f"x1: {self.__cpu.registers['x1'].as_hexadecimal()} "
                   f"x2: {self.__cpu.registers['x2'].as_hexadecimal()}")
+        if c_instr[0:3] != "jmp":
+            self.__cpu.prog_counter = data_types.Word(self.__cpu.prog_counter.value + 1)
         sleep(0.001 * self.__delay)
 
     def run(self):
