@@ -65,7 +65,7 @@ class Engine:
                 if nf == 0:
                     print(w.as_binary())
                 elif nf == 1:
-                    print(w.value())
+                    print(w.value)
                 elif nf == 2:
                     print(w.as_hexadecimal())
                 elif nf == 3:
