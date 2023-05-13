@@ -30,3 +30,9 @@
 | `x1`   | `3`                                    |
 | `x2`   | Karakterin kaydedileceği bellek adresi |
 
+#### Klavyeden Girilen Stringi Oku
+
+| Yazmaç | Beklenen Değer                                            |
+|--------|-----------------------------------------------------------|
+| `x1`   | `4`                                                       |
+| `x2`   | Karakterin kaydedileceği bellek bloğunun başlangıç adresi |
