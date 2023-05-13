@@ -3,11 +3,12 @@
 #       Ferit Yiğit BALABAN, <fybalaban@fybx.dev>
 #
 #       processor.py
+import memory
 from data_types import Word
 
 
 class Processor:
-    def __init__(self):
+    def __init__(self, mem: memory.Memory, parent):
         self.prog_counter = Word(0)
         self.registers = {
             'x0': Word(0),
@@ -50,3 +51,58 @@ class Processor:
             "V": Word(0),
             "XLEN": Word(32)
         }
+        self.memory = mem
+        self.parent = parent
+
+    # noinspection PyUnboundLocalVariable,PyMethodMayBeStatic
+    def decode(self, code: str) -> None:
+        import isa
+
+        if " " in code:
+            opcode, operands = code.split(maxsplit=1)
+            operands = [operand.strip() for operand in operands.split(" ")]
+        else:
+            opcode = code.strip()
+
+        if opcode == "add":
+            isa.isa_add(self, operands[0], operands[1], operands[2])
+        elif opcode == "inv":
+            isa.isa_inv(self, operands[0])
+        elif opcode == "sub":
+            isa.isa_sub(self, operands[0], operands[1], operands[2])
+        elif opcode == "slt":
+            isa.isa_slt(self, operands[0], operands[1], operands[2])
+        elif opcode == "nop":
+            isa.isa_nop(self)
+        elif opcode == "lfm":
+            isa.isa_lfm(self, self.memory, operands[0], operands[1])
+        elif opcode == "stm":
+            isa.isa_stm(self, self.memory, operands[0], operands[1])
+        elif opcode == "mov":
+            isa.isa_mov(self, operands[0], operands[1])
+        elif opcode == "mvi":
+            isa.isa_mvi(self, operands[0], operands[1])
+        elif opcode == "and":
+            isa.isa_and(self, operands[0], operands[1], operands[2])
+        elif opcode == "or":
+            isa.isa_or(self, operands[0], operands[1], operands[2])
+        elif opcode == "xor":
+            isa.isa_xor(self, operands[0], operands[1], operands[2])
+        elif opcode == "shl":
+            isa.isa_shl(self, operands[0], operands[1], operands[2])
+        elif opcode == "shr":
+            isa.isa_shr(self, operands[0], operands[1], operands[2])
+        elif opcode == "jmp":
+            isa.isa_jmp(self, operands[0])
+        # elif opcode == "beq":
+        #     isa.isa_beq(self, operands[0], operands[1], operands[2])
+        # elif opcode == "bne":
+        #     isa.isa_bne(self, operands[0], operands[1], operands[2])
+        # elif opcode == "bge":
+        #     isa.isa_bge(self, operands[0], operands[1], operands[2])
+        elif opcode == "ble":
+            isa.isa_ble(self, operands[0], operands[1], operands[2])
+        elif opcode == "cll":
+            isa.isa_cll(self)
+        else:
+            raise ValueError(f"Invalid opcode: {opcode}")

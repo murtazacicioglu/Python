@@ -140,4 +140,4 @@ def isa_ble(proc: processor.Processor, rs1: str, rs2: str, section: Word):
 
 
 def isa_cll(proc: processor.Processor):
-    pass
+    proc.parent.signal_syscall(proc.registers["x1"], proc.registers["x2"], proc.registers["x3"])

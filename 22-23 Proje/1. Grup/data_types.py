@@ -60,6 +60,14 @@ class Word:
     def as_hexadecimal(self):
         return hex(self._value.value).upper()[2:]
 
+    def from_utf8(self, character: str):
+        if character and len(character) == 1:
+            self._value = c_int32(ord(character))
+        return self
+
+    def as_utf8(self) -> str:
+        return chr(self.value)
+
     @property
     def value(self):
         return self._value.value
