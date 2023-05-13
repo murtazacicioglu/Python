@@ -17,8 +17,8 @@ class Engine:
         self.__parser = parser.Parser()
         self.__delay = 1
         self.__status = False
-        self.__print_decoding = False
-        self.__print_registers = False
+        self.__print_decoding = True 
+        self.__print_registers = True
 
     def load_source_code(self, source_code: str):
         self.__parser.parse_code(source_code)
@@ -97,3 +97,17 @@ class Engine:
                 for char in string:
                     self.__ram.set_memory(mem, data_types.Word(0).from_utf8(char))
                     mem = data_types.Word(mem.value + 1)
+            # read number to register
+            if args[0].value == 5:
+                string = input("")
+                w: Word
+                try:
+                    if args[1] == 0:
+                        w = data_types.Word(0).as_binary(string)
+                    elif args[1] == 1:
+                        w = data_types.Word(int(string))
+                    elif args[1] == 2:
+                        w = data_types.Word(0).as_hexadecimal(string[:-1])
+                except Exception:
+                    self.__cpu.registers["x3"] = data_types.Word(1)
+
