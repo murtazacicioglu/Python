@@ -13,7 +13,7 @@ def isa_add(proc: processor.Processor, rd: str, rs1: str, rs2: str):
     _rs2 = proc.registers[rs2].value
     _rd = Word(0)
 
-    _rd = Word(proc.registers[rs1].value + proc.registers[rs2].value)
+    _rd = Word(_rs1 + _rs2)
 
     # carry bayrağı hesaplama, işaretsiz sayı desteği yok
     proc.flags["Z"] = Word(1 if _rd.value == 0 else 0)
