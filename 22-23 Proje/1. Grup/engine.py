@@ -78,3 +78,10 @@ class Engine:
                     print(next_char.as_utf8(), end="")
                     _iter = data_types.Word(_iter.value + 1)
                     next_char = self.__ram.read_memory(_iter)
+            # read char to memory
+            if args[0].value == 3:
+                char = input("")
+                if char:
+                    self.__ram.set_memory(args[1], data_types.Word(0).from_utf8(char[0]))
+                else:
+                    self.__ram.set_memory(args[1], data_types.Word(0))
