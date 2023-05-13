@@ -10,11 +10,11 @@
 
 #### Ekrana Yazmaç Değeri Yazdır
 
-| Yazmaç | Beklenen Değer                                      |
-|--------|-----------------------------------------------------|
-| `x1`   | `1`                                                 |
-| `x2`   | Bu yazmaçtaki değer ekrana yazılacak.               |
-| `x3`   | Sayı formatı (`0`: ikili; `1`: onlu; `2`: onaltılı) |
+| Yazmaç | Beklenen Değer                                                 |
+|--------|----------------------------------------------------------------|
+| `x1`   | `1`                                                            |
+| `x2`   | Bu yazmaçtaki değer ekrana yazılacak.                          |
+| `x3`   | Sayı formatı (`0`: ikili; `1`: onlu; `2`: onaltılı; `3`: utf8) |
 
 #### Ekrana String Yazdır
 
