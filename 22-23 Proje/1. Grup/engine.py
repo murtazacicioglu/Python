@@ -17,6 +17,8 @@ class Engine:
         self.__parser = parser.Parser()
         self.__delay = 1
         self.__status = False
+        self.__print_decoding = False
+        self.__print_registers = False
 
     def load_source_code(self, source_code: str):
         self.__parser.parse_code(source_code)
@@ -40,12 +42,13 @@ class Engine:
     def step(self):
         c_point = self.__cpu.prog_counter
         c_instr = self.__ram.read_code(c_point)
-        #print(f"decode: {c_instr}")
+        if self.__print_decoding:
+            print(f"decode: {c_instr}")
         self.__cpu.decode(c_instr)
-        #print(f"x0: {self.__cpu.registers['x0'].as_hexadecimal()} "
-              #f"x1: {self.__cpu.registers['x1'].as_hexadecimal()} "
-              #f"x2: {self.__cpu.registers['x2'].as_hexadecimal()}")
-        self.__cpu.prog_counter = data_types.Word(self.__cpu.prog_counter.value + 1)
+        if self.__print_registers:
+            print(f"x0: {self.__cpu.registers['x0'].as_hexadecimal()} "
+                  f"x1: {self.__cpu.registers['x1'].as_hexadecimal()} "
+                  f"x2: {self.__cpu.registers['x2'].as_hexadecimal()}")
         sleep(0.001 * self.__delay)
 
     def run(self):
