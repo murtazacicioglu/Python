@@ -58,6 +58,18 @@ class Engine:
             # halt
             if args[0].value == 0:
                 self.__status = False
+            # print value stored in register
+            if args[0].value == 1:
+                w = args[1]
+                nf = args[2].value
+                if nf == 0:
+                    print(w.as_binary())
+                elif nf == 1:
+                    print(w.value())
+                elif nf == 2:
+                    print(w.as_hexadecimal())
+                elif nf == 3:
+                    print(w.as_utf8(), end="")
             # print string
             if args[0].value == 2:
                 _iter = args[1]
