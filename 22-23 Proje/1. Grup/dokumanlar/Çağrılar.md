@@ -22,3 +22,11 @@
 |--------|----------------------------|
 | `x1`   | `2`                        |
 | `x2`   | Stringin bellekteki adresi |
+
+#### Klavyeden Karakter Oku
+
+| Yazmaç | Beklenen Değer                         |
+|--------|----------------------------------------|
+| `x1`   | `3`                                    |
+| `x2`   | Karakterin kaydedileceği bellek adresi |
+
