@@ -90,3 +90,10 @@ class Engine:
                     self.__ram.set_memory(args[1], data_types.Word(0).from_utf8(char[0]))
                 else:
                     self.__ram.set_memory(args[1], data_types.Word(0))
+            # read string to memory
+            if args[0].value == 4:
+                string = input("")
+                mem = args[1]
+                for char in string:
+                    self.__ram.set_memory(mem, data_types.Word(0).from_utf8(char))
+                    mem = data_types.Word(mem.value + 1)
