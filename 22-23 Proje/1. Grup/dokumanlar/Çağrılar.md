@@ -34,11 +34,11 @@
 
 Okunan karakterin UTF-8 kodlama sisteminde numerik degerini `x3` yazmacindaki degere gore ya `x4` yazmacina kaydeder ya da `x2` yazmacinda verilen bellek adresine kaydeder. Bellege yazma durumunda hedef kayit adresinden sonraki adrese `0` yazilacagina dikkat edilmelidir.
 
-| Yazmaç | Beklenen Değer                                                                |
-|--------|-------------------------------------------------------------------------------|
-| `x1`   | `4`                                                                           |
-| `x2`   | Karakterin kaydedileceği bellek bloğunun başlangıç adresi                     |
-| `x3`   | Kayit konumunu secer (`0`: `x4` yazmaci; `1`: `x2` yazmacindaki bellek adresi)|
+| Yazmaç | Beklenen Değer                                                                 |
+|--------|--------------------------------------------------------------------------------|
+| `x1`   | `4`                                                                            |
+| `x2`   | Karakterin kaydedileceği bellek bloğunun başlangıç adresi                      |
+| `x3`   | Kayit konumunu secer (`0`: `x4` yazmaci; `1`: `x2` yazmacindaki bellek adresi) |
 
 #### Klavyeden Sayi Oku
 
