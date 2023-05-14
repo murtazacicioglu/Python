@@ -43,7 +43,7 @@ class Engine:
         """
         return 1000 / self.__delay
 
-    def set_debug(self, print_registers=False, print_decoding=False):
+    def set_debug(self, print_registers, print_decoding):
         """
         Çalışma zamanı motorunun debug seçeneklerini ayarlar.
         :param print_registers: Çalıştırılan her komuttan sonra 0'dan farklı bir değer tutan yazmaçların değerini ekrana onaltılı sistemde yazar
@@ -57,7 +57,7 @@ class Engine:
         Çalışma zamanı motorunun debug seçeneklerini demet olarak döndürür.
         :return: (print_registers, print_decoding)
         """
-        return (self.__print_registers, self.__print_decoding)
+        return self.__print_registers, self.__print_decoding
 
     def step(self) -> int:
         if not self.__status:
