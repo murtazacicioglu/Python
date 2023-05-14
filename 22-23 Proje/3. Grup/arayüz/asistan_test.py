@@ -6,7 +6,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUiType
-from legendUi import Ui_MainWindow
+from asistanUi import Ui_MainWindow
 
 class MainThread(QThread):
     def __init__(self):
@@ -29,6 +29,6 @@ class Mywindow(QMainWindow):
 
 
 app = QApplication(sys.argv)
-athena = Mywindow()
-athena.show()
+asistan = Mywindow()
+asistan.show()
 exit(app.exec_())
