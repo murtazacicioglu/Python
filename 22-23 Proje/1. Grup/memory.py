@@ -29,15 +29,14 @@ class Memory:
 
         return self.__memory[address.value]
 
-    def get_dump(self):
-        print("RAM Görüntüsü")
-        print("-" * 20)
-        if len(self.__memory.keys()) == 0:
-            print("Bellek Boş!")
-            return
-
-        for key, value in self.__memory.items():
-            print(f"{key.as_hexadecimal()}h: {value.as_hexadecimal()}h")
+    def get_dump(self) -> str:
+        lines = ["RAM Görüntüsü", "-" * 20]
+        if not self.__memory.keys():
+            lines.append("Bellek Boş!")
+        else:
+            for key, value in self.__memory.items():
+                lines.append(f"{Word(key).as_hexadecimal()}h: {value.as_hexadecimal()}h")
+        return "\n".join(lines)
 
     def store_code(self, line: str):
         self.__code_memory.append(line)
