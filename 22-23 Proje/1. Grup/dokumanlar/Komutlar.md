@@ -42,7 +42,7 @@
 
 ### Ek
 
-| Mnemonik | Sentaks                     | Açıklama                                                                                     |
-|----------|-----------------------------|----------------------------------------------------------------------------------------------|
-| `cll`    | `cll`                       | Sistem çağrısı yapar. Detaylar için `Çağrılar.md` dosyasını okuyunuz                         |
-| `db`     | `db name \"quoted_string\"` | Bellekte `name` adıyla referans verilebilen bir null-sonlandırmalı karakter dizisi kaydeder. |
+| Mnemonik | Sentaks                      | Açıklama                                                                                     |
+|----------|------------------------------|----------------------------------------------------------------------------------------------|
+| `cll`    | `cll`                        | Sistem çağrısı yapar. Detaylar için `Çağrılar.md` dosyasını okuyunuz                         |
+| `dbs`    | `dbs name \"quoted_string\"` | Bellekte `name` adıyla referans verilebilen bir null-sonlandırmalı karakter dizisi kaydeder. |
