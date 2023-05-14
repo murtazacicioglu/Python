@@ -41,7 +41,7 @@ def main():
     )
     print("Debug modunu 0,0 formatinda veriniz")
     r, d = input("> ").split(",", maxsplit=1) # unpack hatasi almamak icin maxsplit verdim
-    e.set_debug(r == 1, d == 1)
+    e.set_debug(r == "1", d == "1")
     print("Kod HALT edene dek çalıştırabilir ya da adımlatabilirsiniz.")
     print("1. Adımla (stepping)")
     print("2. Çalıştır")
@@ -56,7 +56,6 @@ def main():
                 break
     elif secim == "2":
         e.run()
-
 
 
 if __name__ == "__main__":
