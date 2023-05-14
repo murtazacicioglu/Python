@@ -20,7 +20,7 @@
 	cll		; cagriyi gerceklestir
 	mov x21, x3	; okunan sayiyi x21'de sakla
 
-	mov x1, 2h	; syscall no.2 hazirligi
+	mvi x1, 2h	; syscall no.2 hazirligi
 	mvi x2, [str1]	; ekrana yazilacak stringin adresini sakla
 	cll		; cagriyi gerceklestir
 
@@ -34,6 +34,7 @@
 	cll		; cagriyi gerceklestir
 
 	mov x1, x0	; islemciyi durdur
+	mov x2, x0	; durum kodu 0
 	cll
 
 .store

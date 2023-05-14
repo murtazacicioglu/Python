@@ -27,8 +27,8 @@
     cll
 
     mov x1, x0
+    mov x2, x0
     cll
-
 
 .store
     dbs str0, "Adınızı girin: "
