@@ -8,6 +8,7 @@
     mvi x2, [str]
     cll
     mov x1, x0
+    mov x2, x0
     cll
 
 .store

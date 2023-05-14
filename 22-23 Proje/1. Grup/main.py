@@ -30,11 +30,32 @@ def main():
     except FileNotFoundError:
         print(f"{yol} yolunda dosya bulunamadı")
 
-    e = engine.Engine()
+    e = engine.Engine(None, "tui")
     e.load_source_code(icerik)
-    print("Kod, belleğe yüklendi")
-    print(f"İşlemci frekansı: {e.get_frequency()} Hz")
-    e.run()
+    print("[Engine] Kod, belleğe yüklendi")
+    print(f"[Engine] İşlemci frekansı: {e.get_frequency()} Hz")
+    r, d = e.get_debug()
+    print(f"Debug secenekleri: ", 
+          f"\n1. Yazmaclar:        {'yaz' if r else 'yazma'}",
+          f"\n2. Komut isaretcisi: {'yaz' if d else 'yazma'}"
+    )
+    print("Debug modunu 0,0 formatinda veriniz")
+    r, d = input("> ").split(",", maxsplit=1) # unpack hatasi almamak icin maxsplit verdim
+    e.set_debug(r == "1", d == "1")
+    print("Kod HALT edene dek çalıştırabilir ya da adımlatabilirsiniz.")
+    print("1. Adımla (stepping)")
+    print("2. Çalıştır")
+    secim = input("> ")
+    if secim == "1":
+        print("Adimlamak icin enter, halt icin h tusuna basiniz")
+        while True:
+            if input("") == "h":
+                break
+            if e.step() == -1:
+                print(f"Islem sona erdi (durum kodu {e.result_code})")
+                break
+    elif secim == "2":
+        e.run()
 
 
 if __name__ == "__main__":

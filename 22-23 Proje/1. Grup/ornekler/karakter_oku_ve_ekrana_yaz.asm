@@ -27,6 +27,7 @@
     cll                 ; çağrı: yazmaç değerini ekrana yaz
 
     mov x1, x0          ; çağrı: halt
+    mov x2, x0		; durum kodu 0
     cll
 
 .store
