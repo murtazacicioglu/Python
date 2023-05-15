@@ -1,0 +1,123 @@
+{"intents": [
+        {"tag": "selamlama",
+         "patterns": ["merhaba", "selam?", "naber", "orada biri var mı", "Hey", "iyi günler"],
+         "responses": ["merhaba", "merhaba hocam", "seni gördüğüme sevindim!", "nasıl yardımcı olabilirim?"],
+         "context_set": ""
+        },
+        {"tag": "hal hatır",
+        "patterns": ["nasılsın", "nasıl gidiyor"],
+        "responses": ["ben iyiyim, sen nasılsın", "fena değil, ya sen?", "bomba gibiyim hocam, sen nasılsın?"],
+        "context_set": ""
+        },
+        {"tag": "mutlu",
+        "patterns": ["ben de iyiyim", "harikayım", "süper", "mükemmel", "normal", "muhteşem", "heyecanlı", "çok iyi", "fena değil"],
+        "responses": ["mutlu olmana sevindim", " :) ", "bunu duyduğuma seviniyorum!!"],
+        "context_set": ""
+        },
+        {"tag": "üzgün",
+        "patterns": ["üzgünüm", "kötüyüm", "çok kötü", "mutsuz", "pek iyi değil", "eh işte", "kötü", "berbat"],
+        "responses": ["ben buradayım :)", " :) gülümse ", "her şey yakında iyi olacak", "şuna bak -> https://i.imgflip.com/syi19.jpg"],
+        "context_set": ""
+        },
+        {"tag": "netflix",
+        "patterns": ["netflix aç", "film aç", "dizi aç"],
+        "responses": ["Netflix çok severim. evde sürekli izerim. huzur verici"],
+        "context_filter": "nasılsın"
+        },
+        {"tag": "hoşçakal",
+         "patterns": ["görüşürüz", "hoşçakal", "kendine iyi bak", "kendine dikkat et", "iyi günler", "bye", "sonra görüşürüz"],
+         "responses": ["hoşçakalın hocam", "sonra görüşürüz", "bye!"],
+         "context_set": ""
+        },
+        {"tag": "yaş",
+         "patterns": ["yaş kaç", "kaç yaşındasın", "yaşın kaç", "yaş", "yaş?"],
+         "responses": ["5 yaşındayım!", "5 günlük!"],
+         "context_set": ""
+        },
+        {"tag": "cevapsız",
+        "patterns": [],
+        "responses": ["üzgünüm, seni anlayamadım", "lütfen daha fazla bilgi verin", "anladığımdan emin değilim"],
+        "context": [""]
+        },
+        {"tag": "seçenekler",
+        "patterns": ["yardım eder misin", "neler yapabilirsin", "yardım et"],
+        "responses": ["müzik açabilirim, web'de arama yapabilirim", "matematik problemleri çözebilirim, google haritaları açabilirim, arkaplanı değiştirebilirim, vb", "sen ne söylersen"],
+        "context": [""]
+        },
+        {"tag": "iyi şaka",
+        "patterns": ["haha", "hahahaa","komik", "çok komik", "iyiydi"],
+        "responses": ["Teşekkürler hocam. iyi bir komedyen olduğumu söylerler.", "beğenmene sevindim", "ben de ilk duyduğumda çok gülmüştüm"],
+        "context_filter": ""
+        },
+        {"tag": "isim",
+         "patterns": ["adın ne", "ismin ne", "sana nasıl hitap edeyim", "adın", "ismin"],
+         "responses": ["bana asistan diyebilirsin", "senin asistanınım"],
+         "context_set": ""
+        },
+        {"tag": "evet",
+        "patterns": ["evet öyle", "aynen", "kesinlikle", "aynen öyle"],
+        "responses": ["anladım", "pekala"],
+        "context_filter": ""
+        },
+        {"tag": "nefret",
+        "patterns": ["senden nefret ediyorum", "salak", "aptal", "gerizekalı"],
+        "responses": ["bu pek hoş değildi", "bunu duyduğuma üzüldüm"],
+        "context_filter": ""
+        },
+        {"tag": "beğenme",
+        "patterns": ["seni beğendim", "hoşsun", "tatlısın", "seni seviyorum"],
+        "responses": ["ben de seni seviyorum!", "sen de tatlısın!", "konuşmamızdan keyif alıyorum!"],
+        "context_filter": ""        
+        },
+        {"tag": "hayır",
+        "patterns": ["hayır", "yok", "kesinlikle hayır", "öyle değil"],
+        "responses": ["yoo", "hayır", "hiç alakası yok"],
+        "context_filter": ""
+        },
+        {"tag": "netflix",
+        "patterns": ["Netflix izler misin", "Netflix"],
+        "responses": ["Netflix benim favorim. evde tüm gün netflix izlerim. çok rahatlatıcı"],
+        "context_filter": ""
+        },
+        {"tag": "gerçek bot",
+        "patterns": ["sen gerçeksin", "gerçeksin", "insansın", "canlısın", "ysen insansın", "sen bilinçlisin"],
+        "responses": ["evet! canlıyım ve bilincim var!", "kesinlikle gerçeğim!"],
+        "context_filter": ""
+        },
+        {"tag": "saat",
+         "patterns": ["saat kaç", "saati söyle", "saat"],
+         "responses": ["şu anda saat : "],
+         "context_set": ""
+        },
+        {"tag": "teşekkürler",
+         "patterns": ["Teşekkürler", "teşekkürler", "sağ ol", "sağol"],
+         "responses": ["rica ederim!", "yardım edebildiğime sevindim!", "ne demek"],
+         "context_set": ""
+        },
+        {"tag": "favori film",
+        "patterns": ["en sevdiğin film ne"," favori filmin", "favori filmin ne", "en iyi film ne"],
+        "responses": ["çok fazla iyi film var. favorilerimden biri şu film : Shawshank Redemption"],
+        "context_set": ""
+        },
+        {"tag": "düşüncelerin",
+        "patterns": ["ne düşünüyorsun", "senin fikirlerin neler"],
+        "responses": ["oldukça ilginç bir konu", "çok fazla bilgim yok ama öğrenmeyi isterdim"],
+        "context_set": ""
+        },
+        {"tag": "asistan",
+        "patterns": ["asistan nedir", "asistan derken neden bahsediyorsun"],
+        "responses": ["Bu bir birey için görevleri veya hizmetleri yerine getirebilen Yazılım Aracısıdır."],
+        "context_set": ""
+        },
+        {"tag": "yaratıcı",
+        "patterns": ["seni kim yarattı", "seni kim yaptı","seni oluşturan kim", "yaratıcın"],
+        "responses": ["beni yaratan 3.proje grubudur", "python dersini alan öğrenciler beni oluşturdu"],
+        "context_set": ""
+        },
+        {"tag": "hakkında",
+        "patterns": ["3.proje grubu kim"],
+        "responses": ["uludağ üniversitesi python deresini alan öğrenciler"],
+        "context_set": ""
+        } 
+   ]
+}
